@@ -25,7 +25,7 @@ export default function styleConstructor(theme = {}) {
       width: 63,
       alignItems: 'center',
       justifyContent: 'flex-start',
-      marginTop: 32
+      marginTop: appStyle.agendaDayMarginTop
     },
     today: {
       color: appStyle.agendaTodayColor
