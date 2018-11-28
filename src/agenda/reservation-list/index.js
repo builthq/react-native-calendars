@@ -198,7 +198,15 @@ class ReactComp extends Component {
         showsVerticalScrollIndicator={false}
         scrollEventThrottle={200}
         onMoveShouldSetResponderCapture={() => {this.onListTouch(); return false;}}
-        keyExtractor={(item, index) => String(index)}
+        keyExtractor={(item, index) => {
+          try {
+            const { reservation } = item;
+            return `${reservation.id} - ${reservation.updated_at}`;
+          } catch (ex) {
+            console.warn(ex.message);
+            return String(index);
+          }
+        }}
         refreshControl={this.props.refreshControl}
         refreshing={this.props.refreshing || false}
         onRefresh={this.props.onRefresh}
